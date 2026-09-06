@@ -1,18 +1,58 @@
-# React + Vite
+# Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React weather application that retrieves weather data from an external API and displays it in a clear, user-friendly interface.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Search for weather by location.
+- Display current weather information and relevant details.
+- Save the last selected location in the browser's `localStorage`.
+- Restore the saved location when the app is opened again.
+- Handle loading, invalid locations, and API errors.
 
-## React Compiler
+## Data and API Requests
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+This app is intended for one person on one browser. It uses `localStorage` to remember the user's selected location, rather than maintaining accounts or a backend database.
 
-Note: This will impact Vite dev & build performances.
+To avoid exhausting the weather API request limit:
 
-## Expanding the ESLint configuration
+- The saved location is reused on page reloads.
+- Requests are made only when a new location is searched or weather data needs to be refreshed.
+- Avoid repeatedly submitting the same location unnecessarily.
+- Add a reasonable refresh interval or cache expiry if automatic updates are implemented.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+`localStorage` is browser-specific and should not be used for sensitive information. Clearing browser storage removes the saved location.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js and npm
+- An API key from the selected weather API provider
+
+### Installation
+
+```bash
+npm install
+```
+
+Create a `.env` file and add the API key using the variable name expected by the application. For Vite applications, environment variables exposed to client-side code normally use the `VITE_` prefix.
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local URL shown in the terminal.
+
+## Production Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Privacy
+
+The app stores only the selected location locally in the browser. No user account or personal profile is required.
