@@ -53,7 +53,7 @@ export default function SearchBox({updateInfo}) {
             let lon = jsonResp[0].lon;
             let weatherResp = await fetch(`${apiUrlW}?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`);
             let weatherJson = await weatherResp.json();
-            // console.log(weatherJson);
+            console.log(weatherJson);
             let result = {
                 city: city,
                 weather: weatherJson.weather[0].main,
