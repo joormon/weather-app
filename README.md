@@ -8,7 +8,7 @@ A simple React weather application that retrieves weather data from an external 
 - Display current weather information and relevant details.
 - Save the last selected location in the browser's `localStorage`.
 - Restore the saved location when the app is opened again.
-- Handle loading, invalid locations, and API errors.
+
 
 ## Data and API Requests
 

@@ -56,6 +56,7 @@ export default function SearchBox({updateInfo}) {
             console.log(weatherJson);
             let result = {
                 city: city,
+                humidity: weatherJson.main.humidity,
                 weather: weatherJson.weather[0].main,
                 temp: weatherJson.main.temp,
                 temp_max: weatherJson.main.temp_max,
